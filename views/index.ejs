@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Bloggit</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./css/index.css">
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+        <script src="https://kit.fontawesome.com/c7c197e250.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header>
+            <i class="fa-solid fa-comments"></i><p>Bloggit</p>
+        </header>
+        <div class="container posts-container">
+
+            <!-- Submit New Post -->
+            <div class="create-post">
+                <form class="create-post-form" action="/blog" method="post" enctype="multipart/form-data">
+                    <!-- <label for="title">Title:</label> -->
+                    <input type="text" name="title" placeholder="Title:" id="create-title">
+                    <!-- <label for="content">Write something:</label> -->
+                    <input type="text" name="content" placeholder="Write Something:" id="create-content">
+                    <div class="img-btn">
+                        <label for="postImage">Upload image:</label>
+                        <input type="file" name="postImage" required>
+                        <button type="submit" name="button" id="post-button">Post</button>
+                    </div>
+                  </form>
+            </div>
+          
+
+            <% blogPosts.forEach((post) => { %>
+                <div class="blog-post">
+                    <div class="blog-post-title">
+                        <h2><%=post.title%> </h2>
+                        <a href="/delete-post/?id=<%= post._id %>" ><i class="fa-solid fa-trash-can"></i></a>
+                    </div>
+                    <img class="post-img-preview" src="data:image/<%=post.img.contentType%>;base64,<%=post.img.data.toString('base64')%>" alt="">
+                    <p><%=post.content%></p>
+                </div>
+            <% }); %>
+          </div>
+          
+          
+          
+        
+        <script src="" async defer></script>
+    </body>
+</html>
